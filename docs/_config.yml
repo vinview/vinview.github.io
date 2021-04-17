@@ -26,7 +26,7 @@ description              : "My personal website"
 #url                      : https://www.cross-validated.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : /assets/images/vinay-hegde.jpg # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+teaser                   : /docs/assets/images/vinay-hegde.jpg # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : " " # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
@@ -49,7 +49,7 @@ comments:
 # Site Author
 author:
   name             : "Vinay Hegde"
-  avatar           : "/assets/images/vinay-hegde.jpg"
+  avatar           : "/docs/assets/images/vinay-hegde.jpg"
   bio              : "Devops Professional"
   location         : "Bangalore"
   email            :
