@@ -34,7 +34,7 @@ github_username:  jekyll
 #theme: minima
 remote_theme: "mmistakes/minimal-mistakes@4.22.0"
 minimal_mistakes_skin: "aqua" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
-teaser: /docs/assets/images/vinay-hegde.jpg
+teaser: /docs/assets/images/kbosko-color-small.jpg
 
 author:
   name     : "VINAY HEGDE"
