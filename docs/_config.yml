@@ -113,6 +113,10 @@ picture:
 plugins:
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-picture-tag
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
