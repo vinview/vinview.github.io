@@ -117,6 +117,13 @@ plugins:
   - jekyll-gist
   - jekyll-picture-tag
   - jekyll-sitemap
+  
+whitelist:
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-include-cache
+  - jekyll-archives
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
