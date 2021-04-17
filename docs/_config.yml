@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
+#title: Your awesome title
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
@@ -33,6 +33,21 @@ github_username:  jekyll
 #theme: minima
 remote_theme: "mmistakes/minimal-mistakes@4.22.0"
 minimal_mistakes_skin: "aqua" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+# Site Settings
+locale                   : "en-US"
+title                    : "Devops and Me"
+title_separator          : "|"
+subtitle                 : # site tagline that appears below site title in masthead
+name                     : "Vinay Hegde"
+description              : "My personal website"
+#port                     : 4000
+#host                     : "0.0.0.0"
+#url                      : https://www.cross-validated.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : # the subpath of your site, e.g. "/blog"
+repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+teaser                   : /assets/images/vinay-hegde.jpg # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo                     : #
+
 plugins:
   - jekyll-feed
   - jekyll-include-cache
