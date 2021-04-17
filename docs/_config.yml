@@ -55,6 +55,31 @@ author:
   bio              : "Senior Devops Professional"
   location         : "Bangalore"
   email            :
+  
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      mathjax: true
+
+  # _portfolio
+  - scope:
+      path: ""
+      type: portfolio
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      
 plugins:
   - jekyll-feed
   - jekyll-include-cache
