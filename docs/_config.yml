@@ -1,41 +1,22 @@
 # Welcome to Jekyll!
 #
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
+# This config file is meant for settings that affect your entire site, values
+# which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# `jekyll serve`. If you change this file, please restart the server process.
 
-#title: Your awesome title
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+# Theme Settings
+#
+# Review documentation to determine if you should use `theme` or `remote_theme`
+# https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-# Build settings
-#theme: minima
-remote_theme: "mmistakes/minimal-mistakes@4.22.0"
-minimal_mistakes_skin: "aqua" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum" "sunrise"
+# theme                  : "minimal-mistakes-jekyll"
+# remote_theme           : "mmistakes/minimal-mistakes"
+minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+
 # Site Settings
 locale                   : "en-US"
-title                    : "Devops and Me"
+title                    : "Me and Devops"
 title_separator          : "|"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Vinay Hegde"
@@ -45,16 +26,37 @@ description              : "My personal website"
 #url                      : https://www.cross-validated.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : /docs/assets/images/vinay-hegde.jpg # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : #
+teaser                   : /assets/images/vinay-hegde.jpg # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+masthead_title           : " " # overrides the website title displayed in the masthead, use " " for no title
+# breadcrumbs            : false # true, false (default)
+words_per_minute         : 200
+comments:
+  provider               : disqus #"disqus" #false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
+  disqus:
+    shortname            : cross-validated # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+  discourse:
+    server               : #https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 # , e.g.: meta.discourse.org
+  facebook               : #https://developers.facebook.com/docs/plugins/comments
+    appid                :
+    num_posts            : # 5 (default)
+    colorscheme          : # "light" (default), "dark"
+  utterances:
+    theme                : # "github-light" (default), "github-dark"
+    issue_term           : # "pathname" (default)
+
 
 # Site Author
 author:
   name             : "Vinay Hegde"
-  avatar           : "/docs/assets/images/vinay-hegde.jpg"
-  bio              : "Senior Devops Professional"
+  avatar           : "/assets/images/vinay-hegde.jpg"
+  bio              : "Devops Professional"
   location         : "Bangalore"
   email            :
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: mailto:vinview@gmail.com
 
 # Site Footer
 # footer:
@@ -148,6 +150,25 @@ paginate: 10 # amount of posts to show
 paginate_path: /page:num/
 timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
+
+# Plugins (previously gems:)
+plugins:
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-include-cache
+  - jekyll-picture-tag
+  - jekyll-sitemap
+#  - jekyll-remote-theme
+
+# mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-include-cache
+  - jekyll-archives
+  - jekyll-sitemap
+
+
 # Archives
 #  Type
 #  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
@@ -162,9 +183,9 @@ timezone: America/Los_Angeles # https://en.wikipedia.org/wiki/List_of_tz_databas
 # category_archive:
 #   type: liquid
 #   path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
+##tag_archive:
+  ##type: liquid
+  ##path: /tags/
 # https://github.com/jekyll/jekyll-archives
 # jekyll-archives:
 #   enabled:
@@ -177,13 +198,15 @@ tag_archive:
 #     category: /categories/:name/
 #     tag: /tags/:name/
 
+
 # HTML Compression
 # - http://jch.penibelst.de/
 compress_html:
   clippings: all
   ignore:
     envs: development
-    
+
+
 # Defaults
 defaults:
   # _posts
@@ -207,6 +230,7 @@ defaults:
       layout: single
       author_profile: true
       share: true
+
 collections:
   portfolio:
     output: true
@@ -236,39 +260,3 @@ picture:
         width: "600"
       source_default:
         width: "320"
-
-      
-plugins:
-  - jekyll-feed
-  - jekyll-include-cache
-  - jekyll-paginate
-  - jekyll-gist
-  - jekyll-picture-tag
-  - jekyll-sitemap
-  
-whitelist:
-  - jekyll-paginate
-  - jekyll-gist
-  - jekyll-include-cache
-  - jekyll-archives
-  - jekyll-sitemap
-
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
