@@ -4,8 +4,7 @@ permalink: /about/
 title: About
 author_profile: true
 header:
-    overlay_image: /assets/images/nature.png
-    caption: "Photo by "
+    overlay_image: /assets/images/nature.jpg
 classes: wide
 date: April 18, 2021
 ---
