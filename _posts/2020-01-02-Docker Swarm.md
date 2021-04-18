@@ -1,7 +1,7 @@
 ---
 title: "Docker Swarm"
 tags:
-date: 2020-01-o2
+date: 2020-01-02
 excerpt: "Docker Swarm"
 ---
 On the Master: gateway, registry & service descovery services  
