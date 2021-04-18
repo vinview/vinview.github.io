@@ -9,10 +9,10 @@ main:
   - title: "Portfolio"
     url: /portfolio/
   - title: "Resume"
-    url: /assets/docs/resume-kbosko.pdf  
+    url: /assets/docs/resume-vinay-hegde.pdf  
   - title: "Certificates"
     url: /certificates/
   - title: "Achievements"
     url: /achievements/
-  - title: "Archive"
-    url: /year-archive/
+  - title: "Blogs"
+    url: /blogs/
