@@ -3,6 +3,19 @@ layout: post
 title: "Dockerfile Reference"
 date: 2019-12-27
 ---
+---
+title: "Dockerfile Reference"
+toc: true
+toc_label: "Content"
+toc_sticky: true
+tags:
+  - Dockerfile Reference
+
+date: 2019-12-27
+header:
+  teaser: /assets/images/nature.jpg
+excerpt: "Dockerfile reference document"
+---
 
 A Dockerfile must begin with a `FROM` instruction.
 
