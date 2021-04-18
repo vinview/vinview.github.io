@@ -4,7 +4,7 @@ permalink: /blogs/
 layout: posts
 author_profile: true
 header:
-    overlay_image: /assets/images/nature.jpg
+    overlay_image: /assets/images/devops-image.jpg
     caption: "Photo by "
 ---
 
