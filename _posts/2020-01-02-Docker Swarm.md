@@ -1,3 +1,9 @@
+---
+title: "Docker Swarm"
+tags:
+date: 2020-01-o2
+excerpt: "Docker Swarm"
+---
 On the Master: gateway, registry & service descovery services  
 Gateway-> Nginx is the default Notary  
 Registry-> Ingress  is for querying the services  
