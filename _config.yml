@@ -34,7 +34,7 @@ words_per_minute         : 200
 comments:
   provider               : disqus #"disqus" #false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
-    shortname            : cross-validated # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : vinayhegde # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : #https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 # , e.g.: meta.discourse.org
   facebook               : #https://developers.facebook.com/docs/plugins/comments
@@ -50,8 +50,8 @@ comments:
 author:
   name             : "Vinay Hegde"
   avatar           : "/assets/images/vinay-hegde.jpg"
-  bio              : "I'll tell you"
-  location         : "Find me"
+  bio              : "Senior Devops Professional"
+  location         : "Bangalore"
   email            :
 
 # Site Footer
