@@ -1,3 +1,10 @@
+---
+title: "Kubernetes Instructions"
+date: 2020-01-02
+header:
+  teaser: /assets/images/nature.jpg
+excerpt: "Some instructions and commands in Kubernetes"
+---
 **K8S installation instruction:**  
 Follow this https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-windows  
 (Download kubectl.exe & copy it to C:\windows\system32)  
