@@ -1,0 +1,100 @@
+<p>Google Analytics allows you to filter out data based on IPs, which comes handy when you want to exclude your own views.</p>
+
+<p>It turned out that my internal IP filter did not work properly and my Google Analytics data all this time was contaminated by my own page views. :(</p>
+
+<p>If you want to avoid my mistakes, read through.</p>
+
+<p class="notice--info text-justify"><i class="far fa-sticky-note"></i> <strong>Note:</strong> It is important to note from the start that applying Filter in Google Analytics is permanent, meaning that Google Analytics will not record excluded data and you will not be able to access it at later stage. So use Filters precautiously.</p>
+
+<h2 id="setting-up-internal-ip-filter-in-google-analytics">Setting up Internal IP Filter in Google Analytics</h2>
+<p>Go to Admin and choose <code class="language-plaintext highlighter-rouge">All Filters</code> from left pane:</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Analytics-Product-Linking.png" alt="Google Analytics Admin page" />
+  </figure>
+
+<p>Click <code class="language-plaintext highlighter-rouge">Add Filter</code> and configure it like so, inserting your IP adress respectively:</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Analytics-Internal-Filter.png" alt="Google Analytics Filter Page" />
+  </figure>
+
+<p class="notice--info text-justify"><i class="far fa-sticky-note"></i> <strong>Note:</strong> If you don’t know your IP address, just google “What is my IP address”.</p>
+
+<p>I have here two views - <code class="language-plaintext highlighter-rouge">All Web Site Data</code> and <code class="language-plaintext highlighter-rouge">Test View</code>. This will be useful later when we will be testing the internal Filter. So if you don’t have the <code class="language-plaintext highlighter-rouge">Test View</code> create it now (Admin -&gt; Create View on the right pane).</p>
+
+<p>Make sure that you added only <code class="language-plaintext highlighter-rouge">All Web Site Data</code> to Selected views, while <code class="language-plaintext highlighter-rouge">Test View</code> is not selected. Don’t forget to Save.</p>
+
+<h2 id="troubleshooting-1---no-ip-anonymization">Troubleshooting 1 - No IP Anonymization</h2>
+
+<p>Theoretically, setting up the Filter as described above should suffice. My mistake, however, was to allow IP anonymization on my Minimal Mistakes website.</p>
+
+<p>So you want to make sure that <code class="language-plaintext highlighter-rouge">anonymize_ip</code> is set to false in <code class="language-plaintext highlighter-rouge">_config.yml</code>:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Analytics</span>
+<span class="na">analytics</span><span class="pi">:</span>
+  <span class="na">provider               </span><span class="pi">:</span> <span class="s">google-gtag</span> <span class="c1"># false (default), "google", "google-universal", "custom"</span>
+  <span class="na">google</span><span class="pi">:</span>
+    <span class="na">tracking_id          </span><span class="pi">:</span> <span class="s">UA-XXXXXXXXX-1</span>
+    <span class="na">anonymize_ip         </span><span class="pi">:</span> <span class="no">false</span> <span class="c1"># false (default)</span>
+    <span class="na">optimize_id          </span><span class="pi">:</span> <span class="s">GTM-XXXXXXX</span>
+</code></pre></div></div>
+
+<h2 id="troubleshooting-2---checking-filter">Troubleshooting 2 - Checking Filter</h2>
+
+<p>One way to check if your internal Filter is NOT working is to open your website and go to Real-Time Report in Google Analytics. If you don’t have much traffic on your website, you will notice the 1 person on your website that has suspiciously the same location as yours (this is how I found out…).</p>
+
+<p>However, there is a better way to check.</p>
+
+<p>For this, you need to install two extensions in Google Chrome -</p>
+
+<ol>
+  <li><a href="https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk?hl=en">Google Tag Assistant</a></li>
+  <li><a href="https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna?hl=en">Google Analytics debugger</a></li>
+</ol>
+
+<p>Make sure you enabled them both. Google Analytics Debugger needs to be explicitly turned on by clicking on its icon. They will appear then in the top right-hand side on your Google Chrome address bar like so:</p>
+
+<figure style="width: 50%" class="align-center">
+  <img src="http://localhost:4000/assets/images/posts/Google-Analytics-Debugger-Tag-Assistant-icons.jpg" alt="Google Analytics Debugger and Tag Assistant Icons in Chrome" />
+</figure>
+
+<p>Now open your website and record a flow with Google Tag Assistant. If you need more info, here’s <a href="https://support.google.com/analytics/answer/6280771">how</a> from Google.</p>
+
+<p class="notice--info text-justify"><i class="far fa-sticky-note"></i> <strong>Note:</strong> For our purposes, you don’t need to go through the whole flow. Just check one-two pages.</p>
+
+<p>When you finished recording, click <code class="language-plaintext highlighter-rouge">Show Full Report</code>. Make sure to check both boxes - for <code class="language-plaintext highlighter-rouge">Test View</code> and for <code class="language-plaintext highlighter-rouge">All Web Site Data</code>.</p>
+
+<p>You will be directed to a Google Tag Assistant Recordings webpage with two reports - one by Tag Assistant and another one by Google Analytics.</p>
+
+<p>You will see Tag Assistant Report by default. Navigate to Google Analytics Report in the top left corner:</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Analytics-in-Tag-Assistant-Recordings.jpg" alt="Google Analytics Report in Google Tag Assistant Recording" />
+  </figure>
+
+<p>Now go to Change location in the left pane (see pic above). Choose <code class="language-plaintext highlighter-rouge">Use a specific IP address</code> and enter your IP address on the right.</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Analytics-Report-Tag-Assistant-Location-Filter.jpg" alt="Location Filter in Google Analytics Report in Google Tag Assistant Recording" />
+  </figure>
+
+<p>Remember that we configured the Views in Filter differentely - enabled it for <code class="language-plaintext highlighter-rouge">All Web Site Data</code> and disabled for <code class="language-plaintext highlighter-rouge">Test View</code>? So here it comes in handy.</p>
+
+<p>If your Filter was set up correctly, you will see no data was recorded for <code class="language-plaintext highlighter-rouge">All Web Site Data</code>.</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Analytics-Report-Tag-Assistant-all-website-data.jpg" alt="Filter check in Google Analytics Report in Google Tag Assistant Recording" />
+  </figure>
+
+<p>On the other hand, the <code class="language-plaintext highlighter-rouge">Test View</code> recorded some information about the user:</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Analytics-Report-Tag-Assistant-test-view.jpg" alt="Filter check in Google Analytics Report in Google Tag Assistant Recording" />
+  </figure>
+
+<p>If you have the same information for both Views, this means that your Filter was not configured correctly. Try going through the steps described above again.</p>
+
+<p>Thumbs up below if you found this post helpful!</p>
+
+<p>Happy blogging.</p>

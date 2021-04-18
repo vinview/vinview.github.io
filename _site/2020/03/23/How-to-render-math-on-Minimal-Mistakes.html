@@ -1,0 +1,43 @@
+<p>You need <a href="https://www.mathjax.org">MathJax</a> if you want to render mathematical equations on your Minimal Mistakes website.</p>
+
+<p>I first learned about it from <a href="http://www.pwills.com/posts/2017/12/20/website.html">the blog post by Peter Willis</a> (thanks, Peter!) However, I couldn’t enable MathJax even after following his instructions. So here’s what I did.</p>
+
+<h3 id="1">1.</h3>
+<p>Add this snippet at the end of the <code class="language-plaintext highlighter-rouge">scripts.html</code> which is in the <code class="language-plaintext highlighter-rouge">_includes</code> folder:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<p>The <a href="https://www.mathjax.org/#gettingstarted">MathJax documentation</a> says that with this snippet you won’t need to change anything with each new version of MathJax.</p>
+
+<h3 id="2">2.</h3>
+
+<p>Enable MathJax in <code class="language-plaintext highlighter-rouge">_config.yml</code> by adding <code class="language-plaintext highlighter-rouge">mathjax: true</code> to the page defaults</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Defaults</span>
+<span class="na">defaults</span><span class="pi">:</span>
+  <span class="c1"># _posts</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">read_time</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">comments</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">mathjax</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+<p class="notice--info text-justify"><i class="far fa-sticky-note"></i> <strong>Note:</strong> If you are using Docker, don’t forget to rebuild your container after making changes to <code class="language-plaintext highlighter-rouge">_config.yml</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build -t minimal-mistakes .
+</code></pre></div></div>
+
+<p>Basically that’s it. Try rendering \(y_0\) using <code class="language-plaintext highlighter-rouge">\\(</code> and <code class="language-plaintext highlighter-rouge">\\)</code> delimeters for inline equations.</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">\\[</code> and <code class="language-plaintext highlighter-rouge">\\]</code> to display equations like this one:</p>
+
+<p>\[ f(a) = \frac{1}{2\pi i} \oint_\gamma \frac{f(z)}{z-a} dz \]</p>
+
+<p class="notice--info text-justify"><i class="far fa-sticky-note"></i> <strong>Note:</strong> If things don’t work, check if the MathJax script is added to the page using Developer tools.</p>

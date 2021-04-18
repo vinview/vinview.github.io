@@ -1,0 +1,127 @@
+<p class="notice--primary"><em>This is Part I of the website HOWTO series. See <a href="/Personal-website-with-Minimal-Mistakes-Jekyll-Theme-HOWTO-Part-II">Part II</a> on theme customization, <a href="/Personal-website-with-Minimal-Mistakes-Jekyll-Theme-HOWTO-Part-III">Part III</a> on deployment on GitHub pages and <a href="/Personal-website-with-Minimal-Mistakes-Jekyll-Theme-HOWTO-Part-IV">Part IV</a> on SEO and analytics.</em></p>
+<p> 
+ </p>
+
+<p>This website is built with <strong>Jekyll using Minimal Mistakes theme</strong> and hosted on <strong>GitHub Pages</strong>. For development and writing posts I use Docker that builds a static website locally and serves it from a Docker container. I then push the local changes upstream to GitHub which then builds the website on GitHub’s servers.</p>
+
+<p>In this first HOWTO serie, I explain how you can set up Docker environment and run website locally.</p>
+
+<h3 id="installation-using-docker">Installation using Docker</h3>
+<p class="text-justify">After forking the <a href="https://github.com/mmistakes/minimal-mistakes">Minimal Mistakes theme</a> on GitHub and cloning it to local machine, you can create Docker container to use virtual environment with already preinstalled ruby.</p>
+
+<dl>
+  <dt><a href="https://www.docker.com">Docker</a> <i class="fab fa-docker"></i></dt>
+  <dd>is a tool that allows you to create OS-level virtual environments that can package and run applications by using containers. A container thus have all the libraries and other dependencies your app needs. You can run several containers on one host in parallel or connect them with each other via defined channels.</dd>
+</dl>
+
+<p><br /></p>
+<h3 id="step-1---create-container-with-ruby-environment">STEP 1 - Create container with ruby environment</h3>
+
+<p>For this you create <code class="language-plaintext highlighter-rouge">Dockerfile</code> in the app’s working directory and code:</p>
+
+<figure class="highlight"><pre><code class="language-docker" data-lang="docker"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="k">FROM</span><span class="s"> ruby:2.5</span>
+
+<span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
+
+<span class="c"># we put README.md as placeholder, because Docker cannot create empty container</span>
+<span class="k">COPY</span><span class="s"> README.md ./</span>
+
+<span class="c">#create volume for later mounting of your local directory</span>
+<span class="k">VOLUME</span><span class="s"> /usr/src/app</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Build the container in the terminal:</p>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build -t ruby-environment .
+</code></pre></div></div>
+<p><br /></p>
+<h3 id="step-2---creating-gemfilelock">STEP 2 - Creating Gemfile.lock</h3>
+
+<p>Now we generate <code class="language-plaintext highlighter-rouge">Gemfile.lock</code> for minimal-mistakes theme with these commands:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run --volume="$PWD:/usr/src/app" -it ruby-environment bundle install
+</code></pre></div></div>
+<p><br /></p>
+<h3 id="step-3---creating-container-for-our-website">STEP 3 - Creating container for our website</h3>
+
+<p>Add <code class="language-plaintext highlighter-rouge">port</code> and <code class="language-plaintext highlighter-rouge">host</code> to your <code class="language-plaintext highlighter-rouge">_config.yml</code> prior to building container.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Site Settings</span>
+<span class="na">locale                   </span><span class="pi">:</span> <span class="s2">"</span><span class="s">en-US"</span>
+<span class="na">title                    </span><span class="pi">:</span> <span class="s2">"</span><span class="s">Minimal</span><span class="nv"> </span><span class="s">Mistakes"</span>
+<span class="na">title_separator          </span><span class="pi">:</span> <span class="s2">"</span><span class="s">-"</span>
+<span class="na">subtitle                 </span><span class="pi">:</span> <span class="s2">"</span><span class="s">Development</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">Site"</span>
+<span class="na">name                     </span><span class="pi">:</span> <span class="s2">"</span><span class="s">Your</span><span class="nv"> </span><span class="s">Name"</span>
+<span class="na">description              </span><span class="pi">:</span> <span class="s2">"</span><span class="s">Minimal</span><span class="nv"> </span><span class="s">Mistakes</span><span class="nv"> </span><span class="s">theme</span><span class="nv"> </span><span class="s">test."</span>
+<span class="na">port                     </span><span class="pi">:</span> <span class="m">4000</span>
+<span class="na">host                     </span><span class="pi">:</span> <span class="s2">"</span><span class="s">0.0.0.0"</span>
+</code></pre></div></div>
+
+<p>Modify the Dockerfile as follows:</p>
+
+<figure class="highlight"><pre><code class="language-docker" data-lang="docker"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre><span class="k">FROM</span><span class="s"> ruby:2.5</span>
+
+<span class="k">RUN </span>bundle config <span class="nt">--global</span> frozen 1
+
+<span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
+
+<span class="c"># prepare to install ruby packages into container</span>
+<span class="k">COPY</span><span class="s"> Gemfile Gemfile.lock minimal-mistakes-jekyll.gemspec ./</span>
+
+<span class="k">RUN </span>bundle <span class="nb">install</span>
+
+<span class="k">VOLUME</span><span class="s"> /usr/src/app</span>
+
+<span class="k">EXPOSE</span><span class="s"> 4000</span>
+
+<span class="k">CMD</span><span class="s"> ["jekyll", "serve"]</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Next steps are:</p>
+<ol>
+  <li>Build a container
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker build -t minimal-mistakes .
+</code></pre></div>    </div>
+  </li>
+  <li>Run your container
+    <div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker run --volume="$PWD:/usr/src/app" -p 4000:4000 -t minimal-mistakes
+</code></pre></div>    </div>
+  </li>
+  <li>Go to <a href="http://0.0.0.0:4000/">http://0.0.0.0:4000/</a></li>
+</ol>
+
+<p>And that’s it! 😊</p>
+
+<p class="text-justify">Now you have your own Docker container running! It makes working on web development a pleasant experience - you see the changes immediately in your web browser.</p>
+
+<p class="text-justify">With one exception: Each time you change something in .yml files (like adding a new navigation page in <code class="language-plaintext highlighter-rouge">_data/navigation.yml</code> or some configuration in your <code class="language-plaintext highlighter-rouge">_config.yml</code>), you need to rebuild the container and run it again to see these changes.</p>
+
+<p class="notice--info text-justify"><i class="far fa-sticky-note"></i> <strong>Note:</strong> Want to try out the test version of the mm theme? NP. Navigate to test directory and add <code class="language-plaintext highlighter-rouge">host</code> and <code class="language-plaintext highlighter-rouge">port</code> to <code class="language-plaintext highlighter-rouge">_config.yml</code> there as well. Then run this command:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run --volume="$PWD:/usr/src/app" -p 6000:4000 -it minimal-mistakes bundle exec rake preview
+</code></pre></div></div>
+<p class="text-justify">So now we can have two instances of the same docker container running in parallel. One on <code class="language-plaintext highlighter-rouge">http://0.0.0.0:4000</code> with the main website and another one (test version) on <code class="language-plaintext highlighter-rouge">http://0.0.0.0:6000</code>.</p>

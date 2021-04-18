@@ -1,0 +1,62 @@
+<p>In another <a href="/Personal-website-with-Minimal-Mistakes-Jekyll-Theme-HOWTO-Part-IV">post</a> I described how to register your Minimal Mistakes website with Google Analytics and Google Search Console. It turns out that I missed one crucial step - linking them together. Here’s a HOWTO do it.
+ 
+ </p>
+
+<h2 id="why-linking-google-search-console-with-google-analytics">Why linking Google Search Console with Google Analytics?</h2>
+<p><strong>Google Search Console</strong> captures queries that people use to find your website in Google. In otherwords, the keywords that drive organic traffic to your site. It also provides major metrics relevant for SEO:</p>
+<ul>
+  <li>Total Clicks</li>
+  <li>Total impressions</li>
+  <li>Average Click-Trough-Rate (CTR)</li>
+  <li>Average position (in Google Search)</li>
+</ul>
+
+<p>By linking with Google Analytics, you will have all these data in <strong>Acquisition –&gt; Search Console</strong> tab, which is handy.</p>
+
+<p>Connecting Google Search Console with Google Analytics also enabled <a href="https://support.google.com/analytics/answer/7411707?hl=en&amp;ref_topic=7346206">Analytics Intelligence</a> - ML-generated insights in dashboards-like format to better understand trends and user behavior on your site <sup id="fnref:ft1" role="doc-noteref"><a href="#fn:ft1" class="footnote" rel="footnote">1</a></sup>:</p>
+
+<figure style="width: 400px" class="align-center">
+  <img src="http://localhost:4000/assets/images/posts/Google-Analytics-intelligence.png" alt="Google Analytics Intelligence Example" />
+</figure>
+<p> </p>
+
+<h2 id="url-prefix-verification">URL-prefix verification</h2>
+<p>At first, I couldn’t figure out why I get the message “You haven’t verified any sites”.
+I thought I did - since I have my Google Search Console running. It turned out that when you first registered with Google Search Console, you went through <strong>domain verfication</strong> process. But to link it with Google Analytics, you need to go through <strong>URL-prefix verification</strong> process first. 
+ 
+ </p>
+
+<p>For this, go to your Google Search Console and add another property (in the left top corner):</p>
+
+<figure style="width: 400px" class="align-center">
+  <img src="http://localhost:4000/assets/images/posts/Google-Search-Console-add-new-property.png" alt="Google Search Console Add New Property" />
+</figure>
+<p> </p>
+
+<p>Then click to add URL-prefix property and type your website’s URL.</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Search-Console-URL-prefix-property.jpg" alt="Google Search Console URL-Prefix Property" />
+  </figure>
+
+<p>After that go to your Google Analytics account and click on Settings in the left down corner. Choose from the PRODUCT LINKING (middle pane) “All Products”. Scroll down to “Search Console”:</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Analytics-Product-Linking.png" alt="Google Analytics Product Linking" />
+  </figure>
+
+<p>Now you can enable the Google Search Console data in Google Analytics:</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Analytics-enable-Search-Console.png" alt="Enable Search Console data in Google Analytics" />
+  </figure>
+
+<p>I hope this post was helpful, thumbs up below if you liked it!</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:ft1" role="doc-endnote">
+      <p>I must say I am not quite sure how exactly I enabled Analytics Intelligence in Google Analytics. It could be due to URL-prefix verfication in Google Search Console. <a href="#fnref:ft1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

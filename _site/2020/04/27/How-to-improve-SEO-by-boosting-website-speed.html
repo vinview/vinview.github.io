@@ -1,0 +1,145 @@
+<p>Recently I taught myself how to conduct technical audit to improve SEO and want to share my knowledge here.</p>
+
+<p>My two reasons for speed slowdown were <strong>Image Sizes</strong> and  <strong>Font Awesome</strong>. Read on to learn my solutions.</p>
+
+<p class="notice--info text-justify"><i class="far fa-sticky-note"></i> <strong>Note:</strong> Although my solutions are universal, I have some specific advice for those who built their website with <a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/">Minimal Mistakes Jekyll theme</a> and <a href="/Personal-website-with-Minimal-Mistakes-Jekyll-Theme-HOWTO-Part-III/">run it on GitHub Pages</a>.</p>
+
+<h2 id="why-speed-matters">Why speed matters?</h2>
+<p>Website’s speed affects a lot of important metrics such as:</p>
+<ul>
+  <li>the ranking position in Google Search results</li>
+  <li>bounce rate</li>
+  <li>conversion rate</li>
+</ul>
+
+<p>Just by reducing the page load time from 3 seconds to 1 second, you can reduce bounce rate by 32%, according to <a href="https://support.google.com/webmasters/answer/9205520">Google data</a>.</p>
+
+<p>Google also created a <a href="https://www.thinkwithgoogle.com/feature/testmysite/">useful tool</a> that allows you to measure the impact of a faster site on your revenue. Here’s an example:</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Lighthouse-speed-revenue-impact-tool.png" alt="Google tool to evaluate impact of a website speed on revenue" />
+  </figure>
+
+<h2 id="running-speed-test">Running Speed Test</h2>
+<p>You can run speed test in two (identical) ways:</p>
+
+<ul>
+  <li>with Page Speed Insights from Google Search Console Speed tab</li>
+</ul>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Lighthouse-PageSpeed-Insights-1500.jpg" alt="PageSpeed Insights in Google Search Console" />
+  </figure>
+
+<ul>
+  <li>From Chrome Dev Tools Audits tab (Lighthouse)</li>
+</ul>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Lighthouse-audit-tab-1000.jpg" alt="Google Lighthouse Audit tab" />
+  </figure>
+
+<p>Both tests produce reports across mobile and desktop devices. While Google’s PageSpeed Insight tool shows you only the Performance score, Lighthouse tool accessible from Chrome Dev Tools provides few more metrics on top of Performance such as Accessibility, Best Practices and SEO.</p>
+
+<p class="notice--info text-justify"><i class="far fa-sticky-note"></i> <strong>Note:</strong> If you want to learn more about Lighthouse Score components and how they are created, checkout this official <a href="https://docs.google.com/spreadsheets/d/1up5rxd4EMCoMaxH8cppcK1x76n6HLx0e7jxb0e0FXvc/edit#gid=283330180">Lighthouse Score Weighting doc</a>. There is also a free <a href="https://www.udacity.com/course/website-performance-optimization--ud884">Website Performance Optimization course</a> on Udacity.</p>
+
+<h2 id="benchmark-score">Benchmark Score</h2>
+
+<p>The tools such as Lighthouse or PageSpeed Insights allow you to test the speed of any page of your website. I decided to start with the main page - https://www.cross-validated.com</p>
+
+<p>When I first checked my blog’s performance, it turned out that the page speed was really good for desktop version (98/100) but only average for mobile version (56/100 rating):</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Lighthouse-PageSpeed-Insights-results-1500.jpg" alt="Google PageSpeed Insight results for cross-validated mobile" />
+  
+    <figcaption>
+      Page Speed Rating on Mobile before Optimization
+
+    </figcaption></figure>
+
+<p>Troubleshooting why it took so long for my website to load, I came down to two main delay sources - <strong>Large Images</strong> and <strong>Font Awesome</strong>.</p>
+
+<h2 id="speed-delay-sources">Speed Delay Sources</h2>
+
+<h3 id="large-images">Large Images</h3>
+
+<p>Large image sizes are really critical for the site’s mobile version. It turned out that my avatar was 1.3 Mb and it was one main reason for the average audit score. Interestingly, this wasn’t a problem for the desktop version, where I got a score of almost 100.</p>
+
+<p>I knew that big image sizes adversly affect the load time. But how big is big? Before I thought that the image quality is the king and the size around 400 kb is really small. Now I try to optimize my images and resize them to get good quality with the maximum image size around 100 Kb.</p>
+
+<p>I batch resize image files from Mac Terminal using native <code class="language-plaintext highlighter-rouge">sips</code> (scriptable image processing system) like so<sup id="fnref:ft1" role="doc-noteref"><a href="#fn:ft1" class="footnote" rel="footnote">1</a></sup>:</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">#</span><span class="w"> </span>Batch Resize 
+<span class="go">sips -Z 800 *.png
+
+</span><span class="gp">#</span><span class="w"> </span>Batch Convert PNG to JPG
+<span class="gp">mkdir jpegs;</span><span class="w"> </span>sips <span class="nt">-s</span> format jpeg <span class="k">*</span>.<span class="k">*</span> <span class="nt">--out</span> jpegs
+<span class="go">
+</span><span class="gp">#</span><span class="w"> </span>Batch Convert JPG to PNG
+<span class="gp">mkdir pngs;</span><span class="w"> </span>sips <span class="nt">-s</span> format png <span class="k">*</span>.<span class="k">*</span> <span class="nt">--out</span> pngs
+</code></pre></div></div>
+
+<p>For screen shots captured automatically with <code class="language-plaintext highlighter-rouge">Command+Shift+4</code> on Mac, it works best if you first resize the <code class="language-plaintext highlighter-rouge">png</code> screen shot and then convert it to <code class="language-plaintext highlighter-rouge">jpeg</code>.</p>
+
+<p class="notice--info text-justify"><i class="far fa-sticky-note"></i> <strong>Note:</strong> There is a nice Jekyll plugin to automatically resize images - <a href="https://github.com/rbuchberger/jekyll_picture_tag">Picture Tag</a>. However, if you host your website on GitHub Pages like me, you can’t use this tool because it is not supported by GitHub Pages. <a href="https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll">GitHub Pages cannot build sites using unsupported plugins</a>.</p>
+
+<p> 
+ </p>
+
+<h3 id="font-awesome">Font Awesome</h3>
+
+<p>Font Awesome provides Twitter, LinkedIN, GitHub and other icons on my blog. Before optimization, it was delivered as JavaScript and was very slow to load.</p>
+
+<p>The solution is to load a <strong>CSS version of Font Awesome instead of JavaScript</strong>.</p>
+
+<p>If you are using <strong>Jekyll Minimal Mistakes theme</strong> like me, you can switch to Font Awesome CSS like so:</p>
+
+<ul>
+  <li>Go to <code class="language-plaintext highlighter-rouge">head.html</code> and add Font-Awesome minified CSS delivered from Cloudflare CDN as a second line after <code class="language-plaintext highlighter-rouge">main.css</code> like so:</li>
+</ul>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- For all browsers --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/assets/css/main.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li>Delete the referral to Font Awesome JavaScript from <code class="language-plaintext highlighter-rouge">_includes/scripts.html</code>:</li>
+</ul>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://kit.fontawesome.com/4eee35f757.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="performance-score-after-optimization">Performance Score after Optimization</h2>
+
+<p>Resizing large images and switching to CSS for Font Awesome boosted the page’s performance score from 59 to 97 on mobile:</p>
+
+<figure class="">
+  <img src="/assets/images/posts/Google-Lighthouse-after-Optimization-1500.jpg" alt="Google PageSpeed Insight results for cross-validated mobile after optimization" />
+  
+    <figcaption>
+      Page Speed Rating on Mobile after Optimization
+
+    </figcaption></figure>
+
+<h2 id="further-testing-and-unresolved-problems">Further Testing and Unresolved Problems</h2>
+
+<p>Testing pages with posts, however, showed again average results (around 80/100). The major problem is that I’m using several third-party JavaScript providers such as:</p>
+
+<ul>
+  <li>Disqus (commenting platform)</li>
+  <li>Google Analytics</li>
+  <li>Google Tag Manager (Google Optimize was installed with GTM)</li>
+  <li>MathJax</li>
+</ul>
+
+<p>Switching off Disqus, for instance, almost halved Time to Interactive (from 11s to 6s). Right now, I am not ready to give up on Disqus. So I think this is a trade-off I have to face.</p>
+
+<p>Another problem that I can’t solve right now is the caching time of static assets. Since I’m hosting on GitHub Pages, I cannot change cache policy which apparently is only 10 m for images on GitHub. :( Now thinking about about moving my site to AWS cloud.</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:ft1" role="doc-endnote">
+      <p>Learned about it thanks to <a href="http://tutorialshares.com/batch-convert-png-jpg-mac-terminal/">Tutorial Shares</a>. <a href="#fnref:ft1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
