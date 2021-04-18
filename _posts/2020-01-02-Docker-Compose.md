@@ -1,3 +1,11 @@
+---
+title: "Docker Compose"
+date: 2020-01-02
+header:
+  teaser: /assets/images/nature.jpg
+excerpt: "Some instruction and commands in Docker Compose"
+---
+
 Docker versions: 1-12, 13-16, 17++  
 Docker compose version1 = Docker version 1-12  
 Docker compose version2 = Docker version 13-16  
