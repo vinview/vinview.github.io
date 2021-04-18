@@ -4,7 +4,7 @@ permalink: /about/
 title: About
 author_profile: true
 header:
-    overlay_image: /assets/images/vinay-hegde.jpg
+    overlay_image: /assets/images/devops-image.png
     caption: "Photo by "
 classes: wide
 date: April 18, 2021
