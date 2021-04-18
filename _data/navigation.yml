@@ -6,8 +6,6 @@ main:
     url: /index.html
   - title: "About"
     url: /about/
-  - title: "Portfolio"
-    url: /portfolio/
   - title: "Resume"
     url: /assets/docs/resume-vinay-hegde.pdf  
   - title: "Certificates"
