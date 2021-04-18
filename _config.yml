@@ -16,14 +16,14 @@ minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt
 
 # Site Settings
 locale                   : "en-US"
-title                    : "D for Devops"
+title                    : "deVops"
 title_separator          : "|"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Vinay Hegde"
-description              : "Busy doing something"
+description              : "My personal website"
 #port                     : 4000
 #host                     : "0.0.0.0"
-#url                      : https://www.cross-validated.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      :  # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : /assets/images/nature.jpg # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -34,7 +34,7 @@ words_per_minute         : 200
 comments:
   provider               : disqus #"disqus" #false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
-    shortname            : vinayhegde # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : cross-validated # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
     server               : #https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 # , e.g.: meta.discourse.org
   facebook               : #https://developers.facebook.com/docs/plugins/comments
@@ -44,6 +44,66 @@ comments:
   utterances:
     theme                : # "github-light" (default), "github-dark"
     issue_term           : # "pathname" (default)
+staticman:
+  allowedFields          : #['name', 'email', 'url', 'message']
+  branch                 : #"master"
+  commitMessage          : #"New comment by {fields.name}"
+  filename               : #comment-{@timestamp}
+  format                 : #"yaml"
+  moderation             : #true
+  path                   : #"/_data/comments/{options.slug}"
+  requiredFields         : #['name', 'email', 'message']
+  transforms:
+    email                : #"md5"
+  generatedFields:
+    date:
+      type               : #"date"
+      options:
+        format           : #"iso8601" default, "timestamp-seconds", "timestamp-milliseconds"
+  endpoint               : # URL of your own deployment with trailing slash, will fallback to the public instance
+reCaptcha:
+  siteKey                :
+  secret                 :
+search                   : # true, false (default)
+search_full_content      : # true, false (default)
+search_provider          : # lunr (default), algolia, google
+algolia:
+  application_id         : # YOUR_APPLICATION_ID
+  index_name             : # YOUR_INDEX_NAME
+  search_only_api_key    : # YOUR_SEARCH_ONLY_API_KEY
+  powered_by             : # true (default), false
+google:
+  search_engine_id       : # YOUR_SEARCH_ENGINE_ID
+  instant_search         : # false (default), true
+# SEO Related
+google_site_verification : h0SskOH0oPGQ0qLbq_kagQ9fWBogeseZ_nNB2JEzLEc
+bing_site_verification   :
+yandex_site_verification :
+naver_site_verification  :
+
+# Social Sharing
+twitter:
+  username               : "vinview"
+facebook:
+  username               :
+  app_id                 :
+  publisher              :
+og_image                 : /assets/images/nature.jpg # Open Graph/Twitter default site image
+# For specifying social profiles
+# - https://developers.google.com/structured-data/customize/social-profiles
+social:
+  type                   : # Person or Organization (defaults to Person)
+  name                   : # If the user or organization name differs from the site's name
+  links: # An array of links to social media profiles
+
+# Analytics
+analytics:
+  provider               : google-gtag # false (default), "google", "google-universal", "custom"
+  google:
+    tracking_id          : 
+    anonymize_ip         : false # false (default)
+    optimize_id          : 
+    allow_google_signals : false
 
 
 # Site Author
@@ -53,6 +113,25 @@ author:
   bio              : "Senior Devops Professional"
   location         : "Bangalore"
   email            :
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: mailto:vinay.dhegde@gmail.com
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      # url: "https://vinview.github.io"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/vinview"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook-square"
+      # url: "https://facebook.com/"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/vinview/"
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/vinay-hegde-728176121/"
 
 # Site Footer
 # footer:
