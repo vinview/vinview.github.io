@@ -1,7 +1,7 @@
 ---
 layout: single
 permalink: /certificates/
-title: Certificates
+title: CERTIFICATES
 author_profile: true
 header:
     overlay_image: /assets/images/devops-image.jpg
