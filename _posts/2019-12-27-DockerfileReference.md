@@ -1,9 +1,4 @@
 ---
-layout: post
-title: "Dockerfile Reference"
-date: 2019-12-27
----
----
 title: "Dockerfile Reference"
 toc: true
 toc_label: "Content"
