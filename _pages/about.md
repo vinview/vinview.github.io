@@ -1,7 +1,7 @@
 ---
 layout: single
 permalink: /about/
-title: About
+title: ABOUT
 author_profile: true
 header:
     overlay_image: /assets/images/devops-image.jpg
