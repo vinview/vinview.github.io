@@ -13,7 +13,7 @@ date: April 18, 2021
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/vinay-hegde.jpg" alt="">
 </figure> 
 
-I have around 14 years of experience in Devops. Yes, you read it right. All 14 years, I have worked in the area of Devops and I am sure I'll continue to work in the same domain for many more years with the same passion.
+I have total 14 years of experience in IT industry and as well as in Devops. Yes, you read it right. All 14 years, I have worked in the area of Devops and I am sure I'll continue to work in the same domain for many more years with the same passion and intent.
 
 
 I am a **Docker Certified Associate** and a **Associate Oracle Cloud Infrastructure Architect**
