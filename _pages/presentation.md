@@ -1,10 +1,22 @@
+---
+layout: single
+permalink: /presentation/
+title: PRESENTATION
+author_profile: true
+header:
+    overlay_image: /assets/images/devops-image.jpg
+classes: wide
+date: April 18, 2021
+---
+
 1. Docker Basics:
 
 
-https://vinaydhegde.github.io/docker-basics/
+[I'm an inline-style link with title](https://vinaydhegde.github.io/docker-basics/ "Docker Basics")
 
 
 2. Kubernetes:
 
 
-https://vinaydhegde.github.io/kubernetes/#/
+[I'm an inline-style link with title](https://vinaydhegde.github.io/kubernetes/#/ "Kubernetes")
+
