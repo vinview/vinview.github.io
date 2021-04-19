@@ -12,11 +12,11 @@ date: April 18, 2021
 1. Docker Basics:
 
 
-[I'm an inline-style link with title](https://vinaydhegde.github.io/docker-basics/ "Docker Basics")
+[Docker Basics](https://vinaydhegde.github.io/docker-basics/ "Docker Basics")
 
 
 2. Kubernetes:
 
 
-[I'm an inline-style link with title](https://vinaydhegde.github.io/kubernetes/#/ "Kubernetes")
+[Kubernetes](https://vinaydhegde.github.io/kubernetes/#/ "Kubernetes")
 
