@@ -7,7 +7,9 @@ main:
   - title: "About"
     url: /about/
   - title: "Resume"
-    url: /assets/docs/resume-vinay-hegde.pdf  
+    url: /assets/docs/resume-vinay-hegde.pdf
+  - title: "Presention"
+    url: /presentation  
   - title: "Certificates"
     url: /certificates/
   - title: "Blogs"
