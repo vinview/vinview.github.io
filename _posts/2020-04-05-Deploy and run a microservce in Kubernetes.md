@@ -84,7 +84,7 @@ The name Kubernetes originates from Greek, meaning helmsman or pilot. Google ope
 - Worker *nodes* that run the actual applications you deploy. It runs 2 processes: kubelet (which communicates with  the Kuberenetes master) and kube-proxy.
 
 
-<img src="/assets/images/k8s/kubernetes-components.png" style="max-width:80%;padding-bottom:20px;" alt="Kubernetes Components">
+<img src="/assets/images/posts/k8s/kubernetes-components.png" style="max-width:80%;padding-bottom:20px;" alt="Kubernetes Components">
 To knowmore about each component, refer: https://kubernetes.io/docs/concepts/overview/components/
 
 ## Kubernetes Concepts
@@ -118,7 +118,7 @@ Now, It's time to look at the App deployment part, which is the main purpose of 
 It displays major tools & technolgies used in Devops & it's dependencies in a Tree pattern.
 
 
-<img src="/assets/images/k8s/devopstree.gif" style="max-width:80%;padding-bottom:20px;" alt="DevopsTree App">
+<img src="/assets/images/posts/k8s/devopstree.gif" style="max-width:80%;padding-bottom:20px;" alt="DevopsTree App">
 
 
 ## Project Setup
@@ -207,7 +207,7 @@ Access Minikube [dashboard](https://kubernetes.io/docs/tasks/access-application-
 $ minikube dashboard
 ```
 
-<img src="/assets/images/k8s/minikube-dashboard.png" style="max-width:80%;padding-bottom:20px;" alt="Minikube Dashboard">
+<img src="/assets/images/posts/k8s/minikube-dashboard.png" style="max-width:80%;padding-bottom:20px;" alt="Minikube Dashboard">
 
 > Note: Config files will be located in the *~/.kube* directory and all the virtual machine bits will be in the *~/.minikube* directory.
 
@@ -248,7 +248,7 @@ In the above example, this spec will create a new Deployment called *devopstree-
 
 We are going to create the following objects in Kubernetes:
 
-<img src="/assets/images/k8s/objects.png" style="max-width:80%;padding-bottom:20px;" alt="objects">
+<img src="/assets/images/posts/k8s/objects.png" style="max-width:80%;padding-bottom:20px;" alt="objects">
 
 ## Volume: db-pv
 
@@ -294,7 +294,7 @@ db-pv   2Gi        RWO            Retain           Available           standard 
 
 You can also see this object in the dashboard:
 
-<img src="/assets/images/k8s/pv.png" style="max-width:80%;padding-bottom:20px;" alt="peristent-volume">
+<img src="/assets/images/posts/k8s/pv.png" style="max-width:80%;padding-bottom:20px;" alt="peristent-volume">
 
 *k8s/devopstree-pvc.yml*:
 
@@ -330,7 +330,7 @@ NAME     STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 db-pvc   Pending   db-pv    0                         standard       9s
 ```
 
-<img src="/assets/images/k8s/pvc.png" style="max-width:80%;padding-bottom:20px;" alt="peristent-volume-claim">
+<img src="/assets/images/posts/k8s/pvc.png" style="max-width:80%;padding-bottom:20px;" alt="peristent-volume-claim">
 
 ## Secrets: postgres-credentials
 
@@ -365,7 +365,7 @@ Add the Secrets object:
 $ kubectl apply -f ./k8s/devopstree-secret.yml
 ```
 
-<img src="/assets/images/k8s/secret.png" style="max-width:80%;padding-bottom:20px;" alt="Secret object">
+<img src="/assets/images/posts/k8s/secret.png" style="max-width:80%;padding-bottom:20px;" alt="Secret object">
 
 ## POSTGRES
 
@@ -642,11 +642,11 @@ $ kubectl create -f ./k8s/devopstree-deployment-flask.yml
 ```
 
 
-<img src="/assets/images/k8s/flask-deployment.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="falsk deployment">
+<img src="/assets/images/posts/k8s/flask-deployment.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="falsk deployment">
 
 This will immediately spin up a new Pod:
 
-<img src="/assets/images/k8s/flask-pod.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="falsk deployment">
+<img src="/assets/images/posts/k8s/flask-pod.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="falsk deployment">
 
 ## Service: devopstree-service-flask
 
@@ -677,7 +677,7 @@ $ kubectl create -f ./k8s/devopstree-service-flask.yml
 
 Now, check whether the Pod you created through deployment is associated with the Service:
 
-<img src="/assets/images/k8s/flask-service-with-pod.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="service & pod">
+<img src="/assets/images/posts/k8s/flask-service-with-pod.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="service & pod">
 
 Apply the migrations and bootsrap the database:
 
@@ -849,9 +849,9 @@ devopstree-react-6c8b7c8cc6-t2xsn      1/1     Running   0          5m57s
 
 > Verify, Pod and Deployment were created successfully in the dashboard.
 
-<img src="/assets/images/k8s/react-deployment.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="react deployment">
+<img src="/assets/images/posts/k8s/react-deployment.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="react deployment">
 
-<img src="/assets/images/k8s/react-pod.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="react pod">
+<img src="/assets/images/posts/k8s/react-pod.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="react pod">
 
 
 ## Service: devopstree-service-react
@@ -879,14 +879,14 @@ Create the service:
 ```sh
 $ kubectl create -f ./k8s/devopstree-service-react.yml
 ```
-<img src="/assets/images/k8s/react-service.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="react service">
+<img src="/assets/images/posts/k8s/react-service.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="react service">
 
 
 Yes.. finally! we are DONE.
 
 You can access the app at: [http://devops-tree/](http://devops-tree)
 
-<img src="/assets/images/k8s/devopstree.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="DevopsTree app">
+<img src="/assets/images/posts/k8s/devopstree.png" style="max-width:80%;padding-top:20px;padding-bottom:20px;" alt="DevopsTree app">
 
 
 ## Scaling
