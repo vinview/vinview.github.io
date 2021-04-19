@@ -118,7 +118,7 @@ Now, It's time to look at the App deployment part, which is the main purpose of 
 It displays major tools & technolgies used in Devops & it's dependencies in a Tree pattern.
 
 
-<img src="/asset/images/k8s/devopstree.gif" style="max-width:80%;padding-bottom:20px;" alt="DevopsTree App">
+<img src="/assets/images/k8s/devopstree.gif" style="max-width:80%;padding-bottom:20px;" alt="DevopsTree App">
 
 
 ## Project Setup
